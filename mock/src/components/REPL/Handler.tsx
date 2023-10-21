@@ -1,6 +1,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { load } from "../csv/loadCSV";
 import { search } from "../csv/searchCSV";
+import { functionDictionary } from "../commandRegistry";
+import { REPLFunction } from "../REPLFunction";
 
 export interface InputProps {
   history: (string | string[][])[];
@@ -67,53 +69,23 @@ export class HandlerClass {
       outputResult = "Output: ";
     }
 
-    // if command is load
-    if (commandString.includes("load_file")) {
-      // value[0] = success or error message
-      // value[1] = dicionary that contains parsed csv data
-      var values = load(commandString);
-      outputResult = outputResult + values[0]; // set output message to success or error
-      if (values[1] != null) {
-        this.parseData = values[1];
-      }
-      if (this.brief) {
-        // if brief mode, simply display output
-        setHistory([...history, outputResult]);
-      } else {
-        // if verbose mode, display input (line) and output
-        setHistory([...history, line, outputResult]);
-      }
-      scrollHistoryToBottom();
-      return;
-    }
+    var commands: string[] = commandString.split(" ");
 
-    // if command is view
-    if (commandString === "view") {
-      outputResult = outputResult + this.parseData; // outputResult = "Output: " + parseData
-      if (this.brief) {
-        // if brief mode, simply display output
-        setHistory([...history, this.parseData]);
-      } else {
-        // if verbose mode, display input (line) and output
-        setHistory([...history, line, this.parseData]);
-      }
-      scrollHistoryToBottom();
-      return;
+    var replFunc = functionDictionary.get(commands[0]);
+    var result: Promise<string>;
+    if (typeof replFunc !== "undefined") {
+      result = replFunc(commands);
+      outputResult = outputResult + result; // set output message to success or error
     }
+    if (this.brief) {
+      // if brief mode, simply display output
+      setHistory([...history, outputResult]);
+    } else {
+      // if verbose mode, display input (line) and output
+      setHistory([...history, line, outputResult]);
+    }
+    scrollHistoryToBottom();
 
-    // if command is search
-    if (commandString.split(" ")[0] === "search") {
-      var searchResult = search(commandString, this.parseData);
-      if (this.brief) {
-        // if brief mode, simply display results
-        setHistory([...history, searchResult]);
-      } else {
-        // if verbose mode, display input (line) and results
-        setHistory([...history, line, searchResult]);
-      }
-      scrollHistoryToBottom();
-      return;
-    }
     setHistory([...history, line]);
     scrollHistoryToBottom();
   }
