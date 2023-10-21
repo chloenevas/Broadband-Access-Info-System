@@ -1,0 +1,30 @@
+/* The main styling for the entire application */
+.App {
+  text-align: center;
+}
+
+/* The main styling for the entire application */
+.App-header {
+  background-color: #41b3be;
+  border: dotted;
+  border-width: 17px;
+  border-color: #358193;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin: 0px;
+}
+
+/* Styling for the element with ID 'Title' */
+#Title {
+  font-size: 32px;
+  line-height: 1.5;
+}
