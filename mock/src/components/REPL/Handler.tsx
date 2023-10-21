@@ -76,19 +76,18 @@ export class HandlerClass {
      
 
     var result: Promise<void>;
-    let data: string = "";
+
 
     if (typeof replFunc !== "undefined") {
       result = replFunc(commands).then((info:string) => {
-        data = info;
-        outputResult += data;
+      
 
          if (this.brief) {
            // if brief mode, simply display output
-           setHistory([...history, data]);
+           setHistory([...history, info]);
          } else {
            // if verbose mode, display input (line) and output
-           setHistory([...history, line, data]);
+           setHistory([...history, line, info]);
          }
         console.log(outputResult);
      
