@@ -16,6 +16,7 @@ export function History(props: HistoryProps) {
     <div className="history">
       {props.history.map((historyItem) => {
         if (typeof historyItem === "string") {
+          console.log("load")
           if (historyItem.includes("Command: ")) {
             brief = false;
           } else {

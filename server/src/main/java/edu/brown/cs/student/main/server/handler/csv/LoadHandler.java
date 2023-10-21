@@ -58,7 +58,7 @@ public class LoadHandler implements Route {
       Parser<List<String>> parser = new Parser<>(new FileReader(filePath), new RowToList());
       this.sharedData.loadProxyData(parser.parse());
       loadMap.put("type", "success");
-      loadMap.put("file path", filePath);
+      loadMap.put("data", filePath);
       return adapter.toJson(loadMap);
 
     } catch(Exception e){
