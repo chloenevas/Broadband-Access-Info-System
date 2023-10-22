@@ -1,3 +1,3 @@
 export interface REPLFunction {    
-    (args: Array<string>): Promise<string | string[]>
+    (args: Array<string>): Promise<string>
 }
