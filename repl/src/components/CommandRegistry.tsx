@@ -74,20 +74,23 @@ async function search(args: Array<string>): Promise<string> {
   else return data;
 }
   
-async function broadband(args: Array<string>): Promise<string> {
+async function broadband(args: Array<string>): Promise<string[]> {
 
   const fetch1 = await fetch(
-    "http://localhost:1234/broadband?state=" + args[2] + "&county=" + args[1]);
+    "http://localhost:5678/broadband?state=" + args[2] + "&county=" + args[1]);
   const json = await fetch1.json();
-  console.log(json)
   const data = await json.data;
-  const result = await json.result;
   const details = await json.details;
+  const state_county = await json.county_state;
+  const timeStamp = await json.retrieved;
   console.log(data)
+  // const output: string[] = [data,timeStamp];
+  console.log(typeof(data));
+
   if (data === undefined) {
     return details
   }
-  else return data; 
+  else return data
 }
 
 export function addToRegistry(command: string, replFunc: REPLFunction) {
