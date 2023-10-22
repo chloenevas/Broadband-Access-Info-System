@@ -72,31 +72,28 @@ export class HandlerClass {
     }
 
     var commands: string[] = commandString.split(" ");
-    var replFunc = functionDictionary.get(commands[0]);
-     
+      var replFunc = functionDictionary.get(commands[0]);
+      var result: Promise<void>;
+      if (typeof replFunc !== "undefined") {
+        result = replFunc(commands).then((info: string) => {
+          if (info !== undefined && info !== "error") {
+            if (this.brief) {
+              // if brief mode, simply display output
+              setHistory([...history, info]);
+            } else {
+              // if verbose mode, display input (line) and output
+              setHistory([...history, line, info]);
+            }
+          }
+          else if (info === undefined) {
+            setHistory([...history, "Make sure you've entered the correct number of arguments"])
+          }
+          else if (info === "error") {
+            setHistory([...history, "Make sure you've loaded the correct filepath"])
 
-    var result: Promise<void>;
-
-
-    if (typeof replFunc !== "undefined") {
-      result = replFunc(commands).then((info:string) => {
-      
-
-         if (this.brief) {
-           // if brief mode, simply display output
-           setHistory([...history, info]);
-         } else {
-           // if verbose mode, display input (line) and output
-           setHistory([...history, line, info]);
-         }
-        console.log(outputResult);
-     
-      }); 
-
-
-    }
-    
-  
+          }
+        });
+      } 
 
     scrollHistoryToBottom();
 
