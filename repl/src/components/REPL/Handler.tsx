@@ -92,6 +92,9 @@ export class HandlerClass {
             setHistory([...history, "Make sure you've loaded the correct filepath"])
 
           }
+          else if (info === "boooo") {
+            setHistory([...history, "boooo"])
+          }
         });
       } 
 

@@ -48,16 +48,21 @@ async function search(args: Array<string>): Promise<string> {
 
   const json = await fetch1.json();
     const data = await json.data;
-    console.log(typeof(data))
   return data;
 }
   
 async function broadband(args: Array<string>): Promise<string> {
-  console.log("boo!")
-  const fetch1 = await fetch("http://localhost:3232" + "/broadband?state=" + args[2] + "&county=" + args[1]);
+
+  const fetch1 = await fetch(
+    "http://localhost:1234/broadband?state=" + args[2] + "&county=" + args[1]);
   const json = await fetch1.json();
+  console.log(json)
   const data = await json.data;
-  return data;
+  const result = await json.result;
+  const details = await json.details;
+  const output: string[] = []
+  output.push(result)
+  return data; 
 }
 
 export function addToRegistry(command: string, replFunc: REPLFunction) {
