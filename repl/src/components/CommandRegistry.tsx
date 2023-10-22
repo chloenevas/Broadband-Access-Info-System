@@ -18,9 +18,16 @@ functionDictionary.set("broadband", broadband);
 
 async function load_file(args: Array<string>): Promise<string> {
   const fetch1 = await fetch("http://localhost:4000" + "/load?filePath=" + args[1]);
-    const json = await fetch1.json();
-  const data = await json.type;
-    return data;
+  const json = await fetch1.json();
+  const responseType = await json.type;
+  const details = await json.error_message;
+  console.log(details)
+  if (responseType === "success") {
+    return responseType;
+  }
+  else {
+    return details
+  }
 }
 
 async function view(args: Array<string>): Promise<string> {
@@ -28,7 +35,12 @@ async function view(args: Array<string>): Promise<string> {
     "http://localhost:4000" + "/view");
   const json = await fetch1.json();
   const data = await json.data;
-  return data;
+  const details = await json.details;
+
+  if (data === undefined) {
+    return details
+  }
+  else return data;
 
 }
 
@@ -46,23 +58,31 @@ async function search(args: Array<string>): Promise<string> {
   }
 
 
+
   const json = await fetch1.json();
-    const data = await json.data;
-  return data;
+  const data = await json.data;
+  const details = await json.details
+  
+  if (data === undefined) {
+    return details
+  }
+  else return data;
 }
   
 async function broadband(args: Array<string>): Promise<string> {
 
   const fetch1 = await fetch(
-    "http://localhost:1234/broadband?state=" + args[2] + "&county=" + args[1]);
+    "http://localhost:4000/broadband?state=" + args[2] + "&county=" + args[1]);
   const json = await fetch1.json();
   console.log(json)
   const data = await json.data;
   const result = await json.result;
   const details = await json.details;
-  const output: string[] = []
-  output.push(result)
-  return data; 
+  console.log(data)
+  if (data === undefined) {
+    return details
+  }
+  else return data; 
 }
 
 export function addToRegistry(command: string, replFunc: REPLFunction) {
