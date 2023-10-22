@@ -56,7 +56,7 @@ async function search(args: Array<string>): Promise<string> {
     "http://localhost:1234" + "/search?target=" + args[1] +"&column=&header=" + args[2] 
   );
   }
-      else if (args.length == 4) { // length is 4 and user included column specification
+      else  { // length is 4 and user included column specification
 
       fetch1 = await fetch(
       "http://localhost:1234" + "/search?target=" + args[2] +"&column=" + args[1] + "&header=" + args[3]);
