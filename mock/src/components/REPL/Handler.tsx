@@ -1,8 +1,10 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { load } from "../csv/loadCSV";
 import { search } from "../csv/searchCSV";
-import { functionDictionary } from "../commandRegistry";
+import { functionDictionary } from "../CommandRegistry";
+import { addToRegistry } from "../CommandRegistry";
 import { REPLFunction } from "../REPLFunction";
+import { type } from "os";
 
 export interface InputProps {
   history: (string | string[][])[];
@@ -70,20 +72,32 @@ export class HandlerClass {
     }
 
     var commands: string[] = commandString.split(" ");
-
     var replFunc = functionDictionary.get(commands[0]);
-    var result: Promise<string>;
+     
+
+    var result: Promise<void>;
+
+
     if (typeof replFunc !== "undefined") {
-      result = replFunc(commands);
-      outputResult = outputResult + result; // set output message to success or error
+      result = replFunc(commands).then((info:string) => {
+      
+
+         if (this.brief) {
+           // if brief mode, simply display output
+           setHistory([...history, info]);
+         } else {
+           // if verbose mode, display input (line) and output
+           setHistory([...history, line, info]);
+         }
+        console.log(outputResult);
+     
+      }); 
+
+
     }
-    if (this.brief) {
-      // if brief mode, simply display output
-      setHistory([...history, outputResult]);
-    } else {
-      // if verbose mode, display input (line) and output
-      setHistory([...history, line, outputResult]);
-    }
+    
+  
+
     scrollHistoryToBottom();
 
     setHistory([...history, line]);

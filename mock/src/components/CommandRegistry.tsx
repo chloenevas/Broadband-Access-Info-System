@@ -4,12 +4,7 @@ export interface InputProps {
   commandString: string;
 }
 
-export const functionDictionary = new Map<string, REPLFunction>();
-
-
-
-export function commandRegistry(props: InputProps) {
-}
+export var functionDictionary = new Map<string, REPLFunction>();
 
   
 //First giving map pre-loaded commands
@@ -23,14 +18,17 @@ functionDictionary.set("search", search);
 async function load_file(args: Array<string>): Promise<string> {
     const fetch1 = await fetch("http://localhost:4000" + "/load?filePath=" + args[1]);
     const json = await fetch1.json();
-    return json
+    const data = await json.type;
+    return data;
 }
 
 async function view(args: Array<string>): Promise<string> {
   const fetch1 = await fetch(
     "http://localhost:4000" + "/view");
   const json = await fetch1.json();
-  return json;
+  const data = await json.data;
+  return data;
+
 }
 
 async function search(args: Array<string>): Promise<string> {
@@ -38,7 +36,8 @@ async function search(args: Array<string>): Promise<string> {
     "http://localhost:4000" + "/search?target=" + args[2] +"&column=" + args[1] + "&header=" + args[3] 
   );
   const json = await fetch1.json();
-  return json;
+ const data = await json.data;
+ return data;
 }
 
 export function addToRegistry(command: string, replFunc: REPLFunction) {
