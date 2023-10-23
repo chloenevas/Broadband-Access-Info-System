@@ -113,7 +113,7 @@ export function REPLInput({
   };
 
   return (
-    <div>
+    <div id="inputContainer">
       <div>
         <form onSubmit={handleSubmit}>
           {" "}

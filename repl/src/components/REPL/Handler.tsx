@@ -85,6 +85,7 @@ export class HandlerClass {
         result = replFunc(commands).then((info: string) => {
             if (this.brief) {
               // if brief mode, simply display output
+              console.log(typeof info)
               setHistory([...history, info]);
               scrollHistoryToBottom();
             } else {

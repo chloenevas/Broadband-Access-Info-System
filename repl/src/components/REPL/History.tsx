@@ -13,7 +13,7 @@ export interface HistoryProps {
 var brief: boolean = true;
 export function History(props: HistoryProps) {
   return (
-    <div className="history">
+    <div className="history" id="historyContainer">
       {props.history.map((historyItem) => {
         if (typeof historyItem === "string") {
           console.log("load")

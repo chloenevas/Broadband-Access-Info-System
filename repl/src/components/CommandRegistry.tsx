@@ -79,11 +79,9 @@ async function broadband(args: Array<string>): Promise<string> {
   const fetch1 = await fetch(
     "http://localhost:4000/broadband?state=" + args[1] + "&county=" + args[0]);
   const json = await fetch1.json();
-  console.log(json)
-  const data = await json.data;
-  // const result = await json.result;
-  const details = await json.details;
-  console.log(typeof(data))
+  const data = await json.data;  
+  const details = json.details;
+  // console.log(typeof(data))
   if (data === undefined) {
     return details
   }
