@@ -39,23 +39,32 @@ export function REPLInput({
 }: InputProps) {
   const [value, setValue] = useState(""); // State for the input value
   const [historyIndex, setHistoryIndex] = useState<number>(-1); // State for history navigation index
+  const [ctrlDown, setCtrlDown] = useState<Boolean>(false);
 
   // useEffect to listen for up and down arrow keys and navigate the history
   useEffect(() => {
-    const handleKeyUp = (event: KeyboardEvent) => {
-      if (event.key === "ArrowUp") {
+    const handleShortcut = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.key === "l") {
+        setValue("load_file <file path>");
+      } else if (e.ctrlKey && e.key === "w") {
+        setValue("view");
+      } else if (e.ctrlKey && e.key === "s") {
+        setValue(
+          "search <search value>" +
+            "<column to search in (index or name)>" +
+            "<True/False: file has headers>"
+        );
+      } else if (e.ctrlKey && e.key === "b") {
+        setValue("broadband <County Name> <State Name>");
+      } else if (e.ctrlKey && e.key === "ArrowUp") {
         navigateHistory("up");
-      } else if (event.key === "ArrowDown") {
+      } else if (e.ctrlKey && e.key === "ArrowDown") {
         navigateHistory("down");
       }
     };
 
-    window.addEventListener("keyup", handleKeyUp);
-
-    return () => {
-      window.removeEventListener("keyup", handleKeyUp);
-    };
-  }, [historyIndex, queryHistory]);
+    window.addEventListener("keydown", handleShortcut);
+  }, [historyIndex, queryHistory, ctrlDown]);
 
   /**
    * Navigates through the command history.

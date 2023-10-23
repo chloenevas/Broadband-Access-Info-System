@@ -30,6 +30,7 @@ export class HandlerClass {
    */
   constructor() {}
 
+
   /**
    * Handles the user's input command and manages the application's behavior based on the command.
    * @param history - An array of strings or string arrays representing the command history.
@@ -83,16 +84,6 @@ export class HandlerClass {
               // if verbose mode, display input (line) and output
               setHistory([...history, line, info]);
           }
-          // else if (info === undefined) {
-          //   setHistory([...history, "Make sure you've entered the correct number of arguments"])
-          // }
-          // else if (info === "error") {
-          //   setHistory([...history, "Make sure you've loaded the correct filepath"])
-
-          // }
-          // else if (info === "boooo") {
-          //   setHistory([...history, "boooo"])
-          // }
         });
       } 
 
