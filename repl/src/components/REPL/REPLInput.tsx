@@ -56,8 +56,9 @@ export function REPLInput({
         );
       } else if (e.ctrlKey && e.key === "b") {
         setValue("broadband <County Name> <State Name>");
-        
-      } else if ( e.key === "ArrowUp") {
+
+      } 
+      else if ( e.key === "ArrowUp") {
         navigateHistory("up");
 
       } else if (e.key === "ArrowDown") {

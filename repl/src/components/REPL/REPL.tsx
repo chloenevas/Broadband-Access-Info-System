@@ -12,21 +12,22 @@ export default function REPL() {
   const [notification, setNotif] = useState("");
   const historySpaceRef = useRef<HTMLDivElement | null>(null);
 
-  const scroll = document.getElementById("scrollHistory");
 
-  if (scroll !== null) {
-    useEffect(() => {
-      const handleScroll = (e: KeyboardEvent) => {
-        if (e.key === "u" && e.ctrlKey) {
-          scroll.scrollTop -= 50;
-        } else if (e.key === "d" && e.ctrlKey) {
-          scroll.scrollTop += 50;
-        }
-      };
+  // const scroll = document.getElementById("scrollHistory");
+  // if (scroll !== null) {
+  //   useEffect(() => {
+  //     const handleScroll = (e: KeyboardEvent) => {
+  //       if (e.key === "u" && e.ctrlKey) {
+  //         scroll.scrollTop -= 50;
+  //       } else if (e.key === "d" && e.ctrlKey) {
+  //         scroll.scrollTop += 50;
+  //       }
+  //     };
 
-      window.addEventListener("keydown", handleScroll);
-    }, []);
-  }
+  //     window.addEventListener("keydown", handleScroll);
+  //   }, []);
+  // }
+
 
   return (
     <div className="repl">
