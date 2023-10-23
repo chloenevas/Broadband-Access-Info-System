@@ -50,7 +50,35 @@ export function REPLInput({
       }
     };
 
-    window.addEventListener("keyup", handleKeyUp);
+    const handleShortcut = (e: KeyboardEvent) => {
+        if (e.ctrlKey && e.key === "l") {
+          setValue("load_file <file path>");
+          // e.preventDefault();
+        } else if (e.ctrlKey && e.key === "v") {
+          setValue("view");
+          // e.preventDefault();
+        } else if (e.ctrlKey && e.key === "s") {
+          setValue(
+            "search <search value>" +
+              "<column to search in (index or name)>" +
+              "<True/False: file has headers>"
+          );
+          // e.preventDefault();
+        } else if (e.ctrlKey && e.key === "b") {
+          setValue("broadband <County Name> <State Name>");
+          // e.preventDefault();
+        } else if (e.key === "ArrowUp") {
+          navigateHistory("up");
+          // e.preventDefault();
+        } else if (e.key === "ArrowDown") {
+          navigateHistory("down");
+          // e.preventDefault();
+        } 
+      };
+
+    // window.addEventListener("keydown", handleKeyUp);
+    window.addEventListener("keydown",handleShortcut)
+    
 
     return () => {
       window.removeEventListener("keyup", handleKeyUp);
@@ -78,6 +106,8 @@ export function REPLInput({
     setValue(queryHistory[queryHistory.length - 1 - historyIndex] || "");
   };
 
+
+
   /**
    * Handles the form submission.
    *
@@ -96,6 +126,9 @@ export function REPLInput({
     setHistoryIndex(-1);
     setValue("");
   };
+
+
+
 
   return (
     <div>

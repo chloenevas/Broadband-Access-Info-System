@@ -30,6 +30,7 @@ export class HandlerClass {
    */
   constructor() {}
 
+
   /**
    * Handles the user's input command and manages the application's behavior based on the command.
    * @param history - An array of strings or string arrays representing the command history.
