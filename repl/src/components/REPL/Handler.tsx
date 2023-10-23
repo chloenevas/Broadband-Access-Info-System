@@ -74,6 +74,12 @@ export class HandlerClass {
 
     var commands: string[] = commandString.split(" ");
       var replFunc = functionDictionary.get(commands[0]);
+
+      var commandValues = commands.shift();
+      if(Array.isArray(commandValues)){
+        commands = commandValues;
+      }
+
       var result: Promise<void>;
       if (typeof replFunc !== "undefined") {
         result = replFunc(commands).then((info: string) => {

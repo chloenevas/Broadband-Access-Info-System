@@ -18,7 +18,7 @@ functionDictionary.set("broadband", broadband);
 
 
 async function load_file(args: Array<string>): Promise<string> {
-  const fetch1 = await fetch("http://localhost:4000" + "/load?filePath=" + args[1]);
+  const fetch1 = await fetch("http://localhost:4000" + "/load?filePath=" + args[0]);
   const json = await fetch1.json();
   const responseType = await json.type;
   const details = await json.error_message;
@@ -46,20 +46,20 @@ async function view(args: Array<string>): Promise<string> {
 
 async function search(args: Array<string>): Promise<string> {
   var fetch1 = null;
-  if (args.length == 2) {
+  if (args.length == 1) {
      fetch1 = await fetch(
-    "http://localhost:4000" + "/search?target=" + args[1] +"&column=&header="
+    "http://localhost:4000" + "/search?target=" + args[0] +"&column=&header="
   );
   }
-      if (args.length == 3) { // user did not include a column specification
+      if (args.length == 2) { // user did not include a column specification
      fetch1 = await fetch(
-    "http://localhost:4000" + "/search?target=" + args[1] +"&column=&header=" + args[2] 
+    "http://localhost:4000" + "/search?target=" + args[0] +"&column=&header=" + args[1] 
   );
   }
       else  { // length is 4 and user included column specification
 
       fetch1 = await fetch(
-      "http://localhost:4000" + "/search?target=" + args[2] +"&column=" + args[1] + "&header=" + args[3]);
+      "http://localhost:4000" + "/search?target=" + args[1] +"&column=" + args[0] + "&header=" + args[2]);
   }
 
 
@@ -77,7 +77,7 @@ async function search(args: Array<string>): Promise<string> {
 async function broadband(args: Array<string>): Promise<string> {
 
   const fetch1 = await fetch(
-    "http://localhost:4000/broadband?state=" + args[2] + "&county=" + args[1]);
+    "http://localhost:4000/broadband?state=" + args[1] + "&county=" + args[0]);
   const json = await fetch1.json();
   console.log(json)
   const data = await json.data;
