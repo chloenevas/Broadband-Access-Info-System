@@ -39,7 +39,7 @@ export function REPLInput({
 }: InputProps) {
   const [value, setValue] = useState(""); // State for the input value
   const [historyIndex, setHistoryIndex] = useState<number>(-1); // State for history navigation index
-  const [ctrlDown, setCtrlDown] = useState<Boolean>(false);
+
 
   // useEffect to listen for up and down arrow keys and navigate the history
   useEffect(() => {
@@ -56,15 +56,20 @@ export function REPLInput({
         );
       } else if (e.ctrlKey && e.key === "b") {
         setValue("broadband <County Name> <State Name>");
-      } else if (e.ctrlKey && e.key === "ArrowUp") {
+        
+      } else if ( e.key === "ArrowUp") {
         navigateHistory("up");
-      } else if (e.ctrlKey && e.key === "ArrowDown") {
+
+      } else if (e.key === "ArrowDown") {
         navigateHistory("down");
-      }
+   
+      } else if (e.ctrlKey && e.key === "c") {
+        setValue("clear");
+      } 
     };
 
     window.addEventListener("keydown", handleShortcut);
-  }, [historyIndex, queryHistory, ctrlDown]);
+  }, [historyIndex, queryHistory]);
 
   /**
    * Navigates through the command history.

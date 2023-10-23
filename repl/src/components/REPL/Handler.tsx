@@ -50,7 +50,7 @@ export class HandlerClass {
     if (commandString === "clear") {
       setHistory([]);
       this.brief = true;
-      scrollHistoryToBottom();
+      // scrollHistoryToBottom();
       return;
     }
 
@@ -59,9 +59,9 @@ export class HandlerClass {
       this.brief = !this.brief;
       if (this.brief == false) {
         // if verbose mode, add the user's command in verbose mode
-        setHistory([...history, line]);
-        scrollHistoryToBottom();
+        setHistory([...history, line]);        
       }
+      scrollHistoryToBottom();
     }
 
     var outputResult: string | string[][] = "";
@@ -86,17 +86,18 @@ export class HandlerClass {
             if (this.brief) {
               // if brief mode, simply display output
               setHistory([...history, info]);
+              scrollHistoryToBottom();
             } else {
               // if verbose mode, display input (line) and output
               setHistory([...history, line, info]);
+              scrollHistoryToBottom();
           }
         });
+
+
       } 
 
-    scrollHistoryToBottom();
-
-    setHistory([...history, line]);
-    scrollHistoryToBottom();
+  
   }
 
   getMode(): Boolean {
