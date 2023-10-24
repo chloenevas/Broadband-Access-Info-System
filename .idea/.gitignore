@@ -5,10 +5,6 @@
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
-config/config/intellij-java-google-style.xml
-node_modules/.bin
-node_modules/fsevents
-node_modules/playwright
-node_modules/playwright-core 
-node_modules/.package-lock.json
+config/
+node_modules/
 
