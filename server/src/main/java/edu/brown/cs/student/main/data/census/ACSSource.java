@@ -65,7 +65,7 @@ public class ACSSource implements CensusDataSource{
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     String strDate = dateFormat.format(retrieved);
     BroadbandData locInfo = new BroadbandData(List.of(List.of("Percentage", "Location","Retrieved"),
-        List.of(input.get(1).get(1),input.get(0).get(1),strDate)));
+        List.of(input.get(1).get(1),input.get(1).get(0),strDate)));
 
       clientConnection.disconnect();
       return locInfo;
