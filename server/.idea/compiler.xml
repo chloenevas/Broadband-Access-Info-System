@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="moshi" />
+        <module name="server-KammieD-francesca-elia" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="moshi" target="17" />
+      <module name="server-KammieD-francesca-elia" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
