@@ -1,0 +1,72 @@
+/**
+ * CSS styles for the body element.
+ */
+body {
+  margin: 0; /* Reset margin to zero */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; /* Define the font family for the body text */
+  -webkit-font-smoothing: antialiased; /* Smooth fonts on webkit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Smooth fonts on macOS browsers */
+}
+
+/**
+ * CSS styles for inline code elements.
+ */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace; /* Define the font family for inline code elements */
+}
+
+/**
+ * CSS styles for elements with the 'history' class.
+ */
+.history {
+  font-size: 1.5em; /* Set font size for history elements */
+  background: linear-gradient(
+    45deg,
+    #0c6,
+    #09f,
+    #60f
+  ); /* Create a gradient background */
+  background-clip: text; /* Clip the background to text */
+  -webkit-background-clip: text; /* For older versions of Chrome/Safari */
+  color: transparent; /* Set text color to transparent */
+}
+
+/**
+ * CSS styles for elements with the 'historySpace' class.
+ */
+.historySpace {
+  height: 450px; /* Adjust the height as needed */
+  overflow-y: scroll; /* Add a vertical scrollbar when content overflows */
+  border: 1px solid #ccc; /* Optional: Add a border for styling */
+}
+
+/**
+ * CSS styles for tables.
+ */
+table {
+  border-collapse: separate; /* Specify separate border for cells */
+  border-spacing: 10px; /* Add spacing between table cells */
+  margin-left: auto; /* Center the table horizontally */
+  margin-right: auto; /* Center the table horizontally */
+}
+
+/**
+ * CSS styles for table headers (th) and table data cells (td).
+ */
+th,
+td {
+  padding: 10px; /* Add padding to cells for spacing inside cells */
+  border: 2px solid #4c8991; /* Add borders for cell separation */
+
+
+}
+
+#inputContainer{
+  position: fixed;
+  bottom: 50;
+  width: 100%
+}
+
