@@ -35,7 +35,7 @@ public class Server {
    * @throws IOException
    */
   public static void main(String[] args) throws DatasourceException, IOException {
-    int port = 4000;
+    int port = 8585;
     Spark.port(port);
 
     //Acess is given to all to avoid issues with accessing the server.

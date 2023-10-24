@@ -19,6 +19,8 @@ export interface InputProps {
   scrollHistoryToBottom: () => void;
 }
 
+
+
 // Create an instance of HandlerClass
 var handl = new HandlerClass();
 
@@ -69,7 +71,21 @@ export function REPLInput({
       } 
     };
 
+    
+    const handleScroll = (e: KeyboardEvent) => {
+      const scroll = document.getElementById("scrollHistory");
+      if (scroll !== null) {
+        if (e.key === "u" && e.ctrlKey) {
+          scroll.scrollTop -= 50;
+    }    else if (e.key === "d" && e.ctrlKey) {
+            scroll.scrollTop += 50;
+    }
+  }
+};
+
     window.addEventListener("keydown", handleShortcut);
+    window.addEventListener("keydown", handleScroll);
+
   }, [historyIndex, queryHistory]);
 
   /**
