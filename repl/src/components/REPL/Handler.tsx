@@ -21,6 +21,7 @@ export class HandlerClass {
    * A boolean flag that represents whether the application is in brief mode (true) or verbose mode (false).
    */
   brief: Boolean = true;
+  mock: Boolean = false;
   /**
    * A string that holds information about the parsed data from CSV files, or "No Files Have Been Parsed" by default.
    */
@@ -64,6 +65,10 @@ export class HandlerClass {
       scrollHistoryToBottom();
     }
 
+    if (commandString === "mock") {
+      this.mock = !this.mock;
+    }
+
     var outputResult: string | string[][] = "";
 
     // if verbose mode, add "command: " to the input and "output: " to the result
@@ -91,11 +96,15 @@ export class HandlerClass {
       }
 
       var result: Promise<void>;
-      if (typeof replFunc !== "undefined") {
+    if (typeof replFunc !== "undefined") {
+      if (this.mock === true) {
+        if (commands[0] === "load_file") {
+          
+        }
+      }
         result = replFunc(commands).then((info: string) => {
             if (this.brief) {
               // if brief mode, simply display output
-              console.log(typeof info)
               setHistory([...history, info]);
               scrollHistoryToBottom();
             } else {
@@ -106,12 +115,13 @@ export class HandlerClass {
         });
 
 
-      } 
-
+    } 
   
+
   }
 
   getMode(): Boolean {
     return this.brief;
   }
+
 }

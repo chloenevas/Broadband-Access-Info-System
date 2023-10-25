@@ -5,8 +5,11 @@ import {
   TEXT_try_button_text,
 } from "../src/components/constants";
 import "../src/components/data/mockedJson";
+import {mainSearchDict} from "../src/components/data/mockedJson"
 
 test.beforeEach(async ({ page }) => {
+  // start backend here
+  
   await page.goto("http://localhost:8000/");
 });
 
@@ -21,7 +24,9 @@ test("trying to view without loading a file produces an error", async ({
     return document.querySelector(".historySpace")?.textContent;
   });
 
-  expect(output).toBe("No Files Have Been Parsed");
+  expect(output).toBe(
+    "You must first load a file to view it. Try loading first."
+  );
 });
 
 test("after loading a valid file, the response is success", async ({
@@ -31,7 +36,7 @@ test("after loading a valid file, the response is success", async ({
   await page
     .getByLabel(TEXT_input_box)
     .fill(
-      "load_file /Users/chloenevas/Documents/mock-cnevas-rgonza27/mock/src/components/data/income.csv"
+      "load_file /Users/chloenevas/Documents/CS32/repl-cnevas-kwalke19/server/src/main/java/edu/brown/cs/student/main/data/csv/income_by_race_edited.csv"
     );
 
   await page.getByRole("button").click();
@@ -41,7 +46,7 @@ test("after loading a valid file, the response is success", async ({
     return document.querySelector(".historySpace")?.textContent;
   });
 
-  expect(resultText).toBe("success!");
+  expect(resultText).toBe("success");
 });
 
 test("after loading an invalid file, the response is failure", async ({
@@ -57,7 +62,7 @@ test("after loading an invalid file, the response is failure", async ({
     return document.querySelector(".historySpace")?.textContent;
   });
 
-  expect(resultText).toBe("couldn't find file");
+  expect(resultText).toBe('Please check that a valid file path has been given. "notFilePath" is incorrect.');
 });
 
 test("trying to view without loading a file and then loading one and calling view", async ({
@@ -71,13 +76,15 @@ test("trying to view without loading a file and then loading one and calling vie
     return document.querySelector(".historySpace")?.textContent;
   });
 
-  expect(output).toBe("No Files Have Been Parsed");
+  expect(output).toBe(
+    "You must first load a file to view it. Try loading first."
+  );
 
   await page.getByLabel(TEXT_input_box).click();
   await page
     .getByLabel(TEXT_input_box)
     .fill(
-      "load_file /Users/chloenevas/Documents/mock-cnevas-rgonza27/mock/src/components/data/income.csv"
+      "load_file /Users/chloenevas/Documents/CS32/repl-cnevas-kwalke19/server/src/main/java/edu/brown/cs/student/main/data/csv/RI_data.csv"
     );
   await page.getByRole("button").click();
   await page.getByLabel(TEXT_input_box).click();
@@ -88,7 +95,7 @@ test("trying to view without loading a file and then loading one and calling vie
     return document.querySelector(".historySpace")?.textContent;
   });
 
-  expect(output).not.toBe("No Files Have Been Parsed");
+  expect(output).toBe("success");
 });
 
 test("verbose: trying to view without loading a file and then loading one and calling brief: view", async ({
@@ -104,13 +111,15 @@ test("verbose: trying to view without loading a file and then loading one and ca
   var output = await page.evaluate(() => {
     return document.querySelector(".historySpace")?.textContent;
   });
-  expect(output).toContain("Command: viewNo Files Have Been Parsed");
+  expect(output).toContain(
+    "modeCommand: viewOutput: You must first load a file to view it. Try loading first."
+  );
 
   await page.getByLabel(TEXT_input_box).click();
   await page
     .getByLabel(TEXT_input_box)
     .fill(
-      "load_file /Users/chloenevas/Documents/mock-cnevas-rgonza27/mock/src/components/data/income.csv"
+      "load_file /Users/chloenevas/Documents/CS32/repl-cnevas-kwalke19/server/src/main/java/edu/brown/cs/student/main/data/csv/RI_data.csv"
     );
   await page.getByLabel(TEXT_input_box).click();
   await page.getByLabel(TEXT_input_box).fill("mode");
