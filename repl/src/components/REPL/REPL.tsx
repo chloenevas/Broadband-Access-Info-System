@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { HISTORY_accessible_name } from "../constants";
 import { History } from "./History";
 import { REPLInput } from "./REPLInput";
 
@@ -16,7 +17,8 @@ export default function REPL() {
 
   return (
     <div className="repl">
-      <div className="historySpace" ref={historySpaceRef} id="scrollHistory">
+      <div className="historySpace" ref={historySpaceRef} id="scrollHistory"
+      aria-label={HISTORY_accessible_name}>
         <History history={history} />
       </div>
       <hr></hr>

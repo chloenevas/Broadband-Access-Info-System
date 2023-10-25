@@ -73,7 +73,17 @@ export class HandlerClass {
     }
 
     var commands: string[] = commandString.split(" ");
-      var replFunc = functionDictionary.get(commands[0]);
+    var replFunc = functionDictionary.get(commands[0]);
+    
+    if (replFunc === undefined && commands[0] !== "mode" && commands[0] !== "clear") {
+      if (this.brief) {
+        setHistory([...history, "\"" + commands[0] + "\"" + " is not a valid input"]);
+        scrollHistoryToBottom();
+      } else {
+        setHistory([...history, line, outputResult + "\"" + commands[0] + "\"" + " is not a valid input"]);
+        scrollHistoryToBottom();
+      }
+    }
 
       var commandValues = commands.shift();
       if(Array.isArray(commandValues)){
@@ -90,7 +100,7 @@ export class HandlerClass {
               scrollHistoryToBottom();
             } else {
               // if verbose mode, display input (line) and output
-              setHistory([...history, line, info]);
+              setHistory([...history, line, outputResult, info]);
               scrollHistoryToBottom();
           }
         });
