@@ -5,7 +5,11 @@ export interface HistoryProps {
 /**
  * Loops through the history to return each element
  * as either a paragraph if it's a string, or an HTML table
- * if it's a list of list of strings
+ * if it's a list of list of strings.
+ * 
+ * Depending on if the mode is brief or verbose, the
+ * history will be formatted accordingly, allowing 
+ * results to be seperated at new lines.
  *
  * @param props - HistoryProps that contains the history list
  * @returns - element of history properly formatted

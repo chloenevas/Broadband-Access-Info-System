@@ -1,15 +1,11 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { load } from "../csv/loadCSV";
-import { search } from "../csv/searchCSV";
 import { functionDictionary } from "../CommandRegistry";
-import { addToRegistry } from "../CommandRegistry";
-import { REPLFunction } from "../REPLFunction";
-import { type } from "os";
+
 
 export interface InputProps {
-  history: (string | string[][])[];
-  setHistory: Dispatch<SetStateAction<(string | string[][])[]>>;
-  commandString: string;
+  history: (string | string[][])[]; //contains results of different commands and any corresponding labels
+  setHistory: Dispatch<SetStateAction<(string | string[][])[]>>; 
+  commandString: string; //user input
   scrollHistoryToBottom: () => void;
 }
 /**
@@ -21,10 +17,6 @@ export class HandlerClass {
    * A boolean flag that represents whether the application is in brief mode (true) or verbose mode (false).
    */
   brief: Boolean = true;
-  /**
-   * A string that holds information about the parsed data from CSV files, or "No Files Have Been Parsed" by default.
-   */
-  parseData: string = "No Files Have Been Parsed";
   /**
    * Creates an instance of the HandlerClass.
    */
@@ -50,7 +42,6 @@ export class HandlerClass {
     if (commandString === "clear") {
       setHistory([]);
       this.brief = true;
-      // scrollHistoryToBottom();
       return;
     }
 
@@ -59,7 +50,9 @@ export class HandlerClass {
       this.brief = !this.brief;
       if (this.brief == false) {
         // if verbose mode, add the user's command in verbose mode
-        setHistory([...history, line]);        
+        setHistory([...history, line + ": verbose"]);        
+      } else{
+        setHistory([...history, line + ": brief"]);        
       }
       scrollHistoryToBottom();
     }
@@ -75,6 +68,7 @@ export class HandlerClass {
     var commands: string[] = commandString.split(" ");
     var replFunc = functionDictionary.get(commands[0]);
     
+    //If the given command is not registered, indicate this on screen to user
     if (replFunc === undefined && commands[0] !== "mode" && commands[0] !== "clear") {
       if (this.brief) {
         setHistory([...history, "\"" + commands[0] + "\"" + " is not a valid input"]);
@@ -85,17 +79,19 @@ export class HandlerClass {
       }
     }
 
+      //Removes command name prior to checking registry
       var commandValues = commands.shift();
       if(Array.isArray(commandValues)){
         commands = commandValues;
       }
 
+  
       var result: Promise<void>;
       if (typeof replFunc !== "undefined") {
+        //Locates the command in the registery map, then obtains its data
         result = replFunc(commands).then((info: string) => {
             if (this.brief) {
               // if brief mode, simply display output
-              console.log(typeof info)
               setHistory([...history, info]);
               scrollHistoryToBottom();
             } else {
@@ -109,9 +105,5 @@ export class HandlerClass {
       } 
 
   
-  }
-
-  getMode(): Boolean {
-    return this.brief;
   }
 }

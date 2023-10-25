@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93af11c6-b2f3-4f62-a879-0f6957b2db08" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/e2e/example.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/repl/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/repl/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/src/components/CommandRegistry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/CommandRegistry.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/src/components/REPL/Handler.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/REPL/Handler.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/src/components/REPL/History.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/REPL/History.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/src/components/REPL/REPL.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/REPL/REPL.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/src/components/REPL/REPLInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/REPL/REPLInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/src/components/REPLFunction.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/REPLFunction.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/test/java/edu/brown/cs/student/main/broadbandhandlers/TestBroadbandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/edu/brown/cs/student/main/broadbandhandlers/TestBroadbandHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/data/census/ACSSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/data/census/ACSSource.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/census/BroadbandHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/census/BroadbandHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/LoadHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/LoadHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/SearchHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/SearchHandler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +58,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TestBroadbandHandler.testBroadbandRequestSuccessMockData">
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.main.server.Server" />
       <module name="moshi" />
@@ -63,8 +72,58 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestBroadbandHandler.testBroadbandRequestSuccessMockData" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="moshi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.main.broadbandhandlers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.main.broadbandhandlers" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.main.broadbandhandlers.TestBroadbandHandler" />
+      <option name="METHOD_NAME" value="testBroadbandRequestSuccessMockData" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCSVHandlers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="moshi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.main.csvhandlers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.main.csvhandlers" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.main.csvhandlers.TestCSVHandlers" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCSVHandlers.testLoadHandlerCorrect" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="moshi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.main.csvhandlers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.main.csvhandlers" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.main.csvhandlers.TestCSVHandlers" />
+      <option name="METHOD_NAME" value="testLoadHandlerCorrect" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestBroadbandHandler.testBroadbandRequestSuccessMockData" />
+        <item itemvalue="JUnit.TestCSVHandlers.testLoadHandlerCorrect" />
+        <item itemvalue="JUnit.TestCSVHandlers" />
         <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>

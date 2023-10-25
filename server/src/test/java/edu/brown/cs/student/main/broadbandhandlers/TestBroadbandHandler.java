@@ -20,6 +20,10 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -57,11 +61,11 @@ public class TestBroadbandHandler {
      * @throws IOException this exception is thrown if a file is badly formed
      */
     public void setup() throws DatasourceException, IOException {
-//        CensusDataSource mockedSource = new MockedACSSource(new BroadbandData(List.of(
-//            List.of("Kings County, California", "83.5", "06", "031"),
-//            List.of("Providence County, Rhode Island", "85.4", "44", "007"))));
-        CensusDataSource mockedSource = new MockedACSSource(new BroadbandData(List.of()));
-        Spark.get("/broadband", new BroadbandHandler(mockedSource));
+        Date retrieved = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String strDate = dateFormat.format(retrieved);
+       CensusDataSource mockedSource = new MockedACSSource(new BroadbandData(List.of(List.of("Percentage", "Location","Retrieved"),
+       List.of("Kings County, California","83.5",strDate),List.of("Providence County, Rhode Island","85.4",strDate))));
         Spark.awaitInitialization(); // don't continue until the server is listening
 
         this.adapter = this.moshi.adapter(this.mapStringObject);
