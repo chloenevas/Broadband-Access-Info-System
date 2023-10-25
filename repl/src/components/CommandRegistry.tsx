@@ -15,8 +15,6 @@ functionDictionary.set("search", search);
 functionDictionary.set("broadband", broadband);
 
 
-
-
 async function load_file(args: Array<string>): Promise<string> {
   const fetch1 = await fetch("http://localhost:8585" + "/load?filePath=" + args[0]);
   const json = await fetch1.json();

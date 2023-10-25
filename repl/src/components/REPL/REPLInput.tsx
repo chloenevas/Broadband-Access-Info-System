@@ -71,15 +71,24 @@ export function REPLInput({
       } 
     };
 
-    
+
     const handleScroll = (e: KeyboardEvent) => {
       const scroll = document.getElementById("scrollHistory");
       if (scroll !== null) {
         if (e.key === "u" && e.ctrlKey) {
-          scroll.scrollTop -= 50;
+          scroll.scrollTop -= 10;
     }    else if (e.key === "d" && e.ctrlKey) {
-            scroll.scrollTop += 50;
-    }
+            scroll.scrollTop += 10;
+          
+    } 
+    // else if (e.key === "ArrowLeft" && e.ctrlKey) {
+    //   console.log(true)
+    //   scroll.scrollLeft -= 10;
+    //   e.preventDefault();
+    // } else if (e.key === "ArrowRight" && e.ctrlKey) {
+    //   scroll.scrollLeft += 10;
+    //   e.preventDefault();
+    // }
   }
 };
 
