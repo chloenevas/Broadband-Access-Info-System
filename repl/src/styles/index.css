@@ -61,12 +61,21 @@ td {
   padding: 10px; /* Add padding to cells for spacing inside cells */
   border: 2px solid #4c8991; /* Add borders for cell separation */
 
-
 }
 
-#inputContainer{
-  position: fixed;
-  bottom: 50;
+#inputContainer, hr{
+  margin-top: 1%;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;    
+  /* /* position: fixed; */
+ 
   width: 100%
+}
+
+input{
+  /* flex: 0 0 auto; */
+  flex: 1 1 auto;
 }
 
