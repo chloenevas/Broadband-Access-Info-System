@@ -46,7 +46,6 @@ public class Server {
 
     CsvData sharedState = new CsvData();
 
-
     Spark.get("/load", new LoadHandler(sharedState));
     Spark.get("/view", new ViewHandler(sharedState));
     Spark.get("/search", new SearchHandler(sharedState));
