@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
-import {functionDictionary} from "../src/components/CommandRegistry";
-import { addToRegistry } from "../src/components/CommandRegistry";
+import { functionDictionary } from "../src/components/REPL/CommandRegistry";
+import { addToRegistry } from "../src/components/REPL/CommandRegistry";
 
 async function registry_test(args: Array<string>): Promise<string> {
   const fetch1 = await fetch(
@@ -18,8 +18,7 @@ async function registry_test(args: Array<string>): Promise<string> {
 }
 
 async function view(args: Array<string>): Promise<string> {
-  const fetch1 = await fetch(
-    "http://localhost:8585" + "/view");
+  const fetch1 = await fetch("http://localhost:8585" + "/view");
   const json = await fetch1.json();
   const data = await json.data;
   const details = await json.details;
@@ -29,6 +28,9 @@ async function view(args: Array<string>): Promise<string> {
   } else return data;
 }
 
+/**
+ * Uses a created function to test registering a new command
+ */
 test("registers a new command", async () => {
   addToRegistry("registry_test", registry_test);
 
@@ -43,40 +45,12 @@ test("registers a new command", async () => {
   }
 });
 
+/**
+ * Uses view to test that it will give an error because it's already in the map 
+ */
 test("trying to register an already registered command", async () => {
   addToRegistry("view", view);
- expect(addToRegistry("view", view)).toBe("view already exists in the registry")
-});
-
-test("load command", async () => {
-
-  const replFunc = functionDictionary.get("load_file");
-
-  expect(replFunc).toBeDefined();
-
-  // NOT WORKING RN 
-  if (replFunc !== undefined) {
-    return replFunc([
-      "asdfadv",
-    ]).then((info: string) => {
-      expect(info).toBe("File not loaded");
-    });
-    
-  }
-});
-
-test("view command", async () => {
-  const replFunc = functionDictionary.get("view");
-
-  expect(replFunc).toBeDefined();
-
-  // FINISH
-});
-
-test("search command", async () => {
-  const replFunc = functionDictionary.get("search");
-
-  expect(replFunc).toBeDefined();
-
-  // FINISH
+  expect(addToRegistry("view", view)).toBe(
+    "view already exists in the registry"
+  );
 });

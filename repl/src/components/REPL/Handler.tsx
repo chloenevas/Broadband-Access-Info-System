@@ -2,8 +2,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import { load } from "../mocking/loadCSV";
 import { search } from "../mocking/searchCSV";
 import { broadband } from "../mocking/broadband";
-import { functionDictionary } from "../CommandRegistry";
-
+import { functionDictionary } from "./CommandRegistry";
 
 export interface InputProps {
   history: (string | string[][])[];
@@ -124,7 +123,6 @@ export class HandlerClass {
             setHistory([...history, line, outputResult, info]);
             scrollHistoryToBottom();
           }
-
         });
       }
     } else {
@@ -191,7 +189,6 @@ export class HandlerClass {
       setHistory([...history, line]);
       scrollHistoryToBottom();
     }
-
   }
 
   getMode(): Boolean {

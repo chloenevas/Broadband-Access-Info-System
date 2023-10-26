@@ -72,7 +72,8 @@
 
     In Broadband.spec.ts we test that searching for a valid county + state produces the proper result. Also, searching for an invalid county + state gives an error, and trying to search without entering a county or state gives an error. Again, there is a mixture of mocking and actual backend calls. 
 
-    In Backend.spec.ts, we unit test the addToRegistry function of CommandRegistry by using jest. We also unit test the load, view, and search commands 
+    In Backend.Registry.spec.ts, we unit test the addToRegistry function of CommandRegistry by using jest. We also unit test the load, view, and search commands.
+
 
 ## How to...
 

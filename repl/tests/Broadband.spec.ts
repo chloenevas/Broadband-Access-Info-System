@@ -1,7 +1,6 @@
-import "../src/components/CommandRegistry";
+import "../src/components/REPL/CommandRegistry";
 import { test, expect } from "@playwright/test";
 import "../src/components/mocking/mockedJson";
-
 
 test.beforeEach(async ({ page }) => {
   // start backend here
@@ -60,7 +59,9 @@ test("testing broadband with no county or state entered", async ({ page }) => {
   ).toBeVisible();
 });
 
-test("testing broadband after testing load and then testing view", async ({ page }) => {
+test("testing broadband after testing load and then testing view", async ({
+  page,
+}) => {
   await page.getByLabel("enter command").click();
   await page
     .getByLabel("enter command")
@@ -71,23 +72,17 @@ test("testing broadband after testing load and then testing view", async ({ page
   await page.waitForSelector(".historySpace");
   await expect(page.getByText("success")).toBeVisible();
 
- await page.getByLabel("enter command").click();
- await page
-   .getByLabel("enter command")
-   .fill(
-     "broadband Providence+County Rhode+Island"
-   );
- await page.getByRole("button").click();
- await page.waitForSelector(".historySpace");
-await expect(page.getByRole("cell", { name: "85.4" })).toBeVisible();
-
   await page.getByLabel("enter command").click();
   await page
     .getByLabel("enter command")
-    .fill(
-      "view"
-    );
+    .fill("broadband Providence+County Rhode+Island");
   await page.getByRole("button").click();
   await page.waitForSelector(".historySpace");
-  await expect(page.getByRole("cell", { name: '"115,740.00"' })).toBeVisible();  
+  await expect(page.getByRole("cell", { name: "85.4" })).toBeVisible();
+
+  await page.getByLabel("enter command").click();
+  await page.getByLabel("enter command").fill("view");
+  await page.getByRole("button").click();
+  await page.waitForSelector(".historySpace");
+  await expect(page.getByRole("cell", { name: '"115,740.00"' })).toBeVisible();
 });

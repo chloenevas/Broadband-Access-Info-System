@@ -1,7 +1,6 @@
 import "@testing-library/jest-dom";
-import {functionDictionary} from "../src/components/CommandRegistry";
-import { addToRegistry } from "../src/components/CommandRegistry";
-import { REPLFunction } from "../src/components/REPLFunction";
+import {functionDictionary} from "../src/components/REPL/CommandRegistry";
+import { addToRegistry } from "../src/components/REPL/CommandRegistry";
 
 /**This is a basic function that implements REPLFunction to be used for proper registry. It returns
  * the first element from the array.
