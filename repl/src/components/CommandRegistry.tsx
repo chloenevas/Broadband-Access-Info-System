@@ -6,6 +6,7 @@ export interface InputProps {
 }
 
 export var functionDictionary = new Map<string, REPLFunction>();
+var sessionId = Math.floor((Math.random() * 100000));
 
   
 //First giving map pre-loaded commands
@@ -16,7 +17,8 @@ functionDictionary.set("broadband", broadband);
 
 
 async function load_file(args: Array<string>): Promise<string> {
-  const fetch1 = await fetch("http://localhost:8585" + "/load?filePath=" + args[0]);
+  console.log(sessionId);
+  const fetch1 = await fetch("http://localhost:8585" + "/load?sessionID=" + sessionId + "&filePath=" + args[0]);
   const json = await fetch1.json();
   const responseType = await json.type;
   const details = await json.error_message;
@@ -30,7 +32,7 @@ async function load_file(args: Array<string>): Promise<string> {
 
 async function view(args: Array<string>): Promise<string> {
   const fetch1 = await fetch(
-    "http://localhost:8585" + "/view");
+    "http://localhost:8585" + "/view?sessionID=" + sessionId);
   const json = await fetch1.json();
   const data = await json.data;
   const details = await json.details;
@@ -46,18 +48,18 @@ async function search(args: Array<string>): Promise<string> {
   var fetch1 = null;
   if (args.length == 1) {
      fetch1 = await fetch(
-    "http://localhost:8585" + "/search?target=" + args[0] +"&column=&header="
+    "http://localhost:8585" + "/search?sessionID=" + sessionId + "&target=" + args[0] +"&column=&header="
   );
   }
       if (args.length == 2) { // user did not include a column specification
      fetch1 = await fetch(
-    "http://localhost:8585" + "/search?target=" + args[0] +"&column=&header=" + args[1] 
+    "http://localhost:8585" + "/search?sessionID=" + sessionId + "&target=" + args[0] +"&column=&header=" + args[1] 
   );
   }
       else  { // length is 4 and user included column specification
 
       fetch1 = await fetch(
-      "http://localhost:8585" + "/search?target=" + args[1] +"&column=" + args[0] + "&header=" + args[2]);
+      "http://localhost:8585" + "/search?sessionID=" + sessionId + "&target=" + args[1] +"&column=" + args[0] + "&header=" + args[2]);
   }
 
 
