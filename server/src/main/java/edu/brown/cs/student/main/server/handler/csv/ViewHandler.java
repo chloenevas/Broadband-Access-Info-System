@@ -44,6 +44,8 @@ public class ViewHandler implements Route {
 
     @Override
     public Object handle(Request request, Response response) {
+        int sessionID = Integer.parseInt(request.queryParams("sessionID"));
+
         Moshi moshi = new Moshi.Builder().build();
 
         Type mapStringObject = Types.newParameterizedType(Map.class, String.class, Object.class);
@@ -52,8 +54,13 @@ public class ViewHandler implements Route {
 
         try {
             viewMap.put("type", "success");
-            viewMap.put("data", this.sharedData.getProxyData());
-            return adapter.toJson(viewMap);
+            if (this.sharedData.getProxyData(sessionID) != null) {
+                viewMap.put("data", this.sharedData.getProxyData(sessionID));
+                return adapter.toJson(viewMap);
+            }
+            else {
+                throw new Exception("You must first load a file to view it. Try loading first.");
+            }
 
         } catch (Exception e) {
             String errorMessage = e.getMessage();
@@ -67,5 +74,3 @@ public class ViewHandler implements Route {
         }
     }
 }
-
-

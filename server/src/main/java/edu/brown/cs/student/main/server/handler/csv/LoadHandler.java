@@ -47,6 +47,9 @@ public class LoadHandler implements Route {
   @Override
   public Object handle(Request request, Response response){
     String filePath = request.queryParams("filePath");
+    int sessionID = Integer.parseInt(request.queryParams("sessionID"));
+
+    this.sharedData.setSessionID(sessionID);
 
     Moshi moshi = new Moshi.Builder().build();
     Type mapStringObject = Types.newParameterizedType(Map.class, String.class, Object.class);
