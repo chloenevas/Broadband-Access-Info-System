@@ -2,8 +2,6 @@ import { test, expect } from "@playwright/test";
 import {
   HISTORY_accessible_name,
   TEXT_input_box,
-  TEXT_try_button_accessible_name,
-  TEXT_try_button_text,
 } from "../src/components/constants";
 import "../src/components/data/mockedJson";
 import { mainSearchDict } from "../src/components/data/mockedJson";

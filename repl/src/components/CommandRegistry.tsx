@@ -7,6 +7,7 @@ export interface InputProps {
 
 export var functionDictionary = new Map<string, REPLFunction>();
 var sessionId = Math.floor((Math.random() * 100000));
+var mock: Boolean = false;
 
   
 //First giving map pre-loaded commands
@@ -17,7 +18,6 @@ functionDictionary.set("broadband", broadband);
 
 
 async function load_file(args: Array<string>): Promise<string> {
-  console.log(sessionId);
   const fetch1 = await fetch("http://localhost:8585" + "/load?sessionID=" + sessionId + "&filePath=" + args[0]);
   const json = await fetch1.json();
   const responseType = await json.type;
@@ -62,8 +62,6 @@ async function search(args: Array<string>): Promise<string> {
       "http://localhost:8585" + "/search?sessionID=" + sessionId + "&target=" + args[1] +"&column=" + args[0] + "&header=" + args[2]);
   }
 
-
-
   const json = await fetch1.json();
   const data = await json.data;
   const details = await json.details
@@ -75,7 +73,6 @@ async function search(args: Array<string>): Promise<string> {
 }
   
 async function broadband(args: Array<string>): Promise<string> {
-
   const fetch1 = await fetch(
     "http://localhost:8585/broadband?state=" + args[1] + "&county=" + args[0]);
   const json = await fetch1.json();
@@ -93,3 +90,4 @@ export function addToRegistry(command: string, replFunc: REPLFunction) {
         functionDictionary.set(command, replFunc);
     }
 }
+
