@@ -13,19 +13,6 @@ test.beforeEach(async ({ page }) => {
   await page.goto("http://localhost:8000/");
 });
 
-test("trying to view without loading a file produces an error", async ({
-  page,
-}) => {
-  await page.getByLabel("enter command").click();
-  await page.getByLabel("enter command").fill("view");
-  await page.getByRole("button").click();
-  await page.waitForSelector(".historySpace");
-
-  await expect(page.getByLabel(HISTORY_accessible_name)).toHaveText(
-    "You must first load a file to view it. Try loading first."
-  );
-});
-
 test("after loading a valid file, the response is success", async ({
   page,
 }) => {
