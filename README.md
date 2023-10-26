@@ -72,7 +72,7 @@
 
     In Broadband.spec.ts we test that searching for a valid county + state produces the proper result. Also, searching for an invalid county + state gives an error, and trying to search without entering a county or state gives an error. Again, there is a mixture of mocking and actual backend calls. 
 
-    In REPL.test.ts, we unit test the addToRegistry function of CommandRegistry by using jest. 
+    In Backend.spec.ts, we unit test the addToRegistry function of CommandRegistry by using jest. We also unit test the load, view, and search commands 
 
 ## How to...
 
@@ -82,7 +82,7 @@
     will run through all the tests and produce the result of passed/failed tests in the terminal. To get more
     information about the tests, you can run "npx playwright show-report". "npx playwright test --ui" can also be used to see the web app while the tests are running. Additionally, the tests can be run using the Testing tab of VSCode.
 
-    To run the jest unit tests, type "npm test" in the terminal.
+    To run the jest unit tests, type "npm test" in the terminal. To see the results of specific test suites, type h, then p, then the name of the test file.
 
 ### Run the program:
 
