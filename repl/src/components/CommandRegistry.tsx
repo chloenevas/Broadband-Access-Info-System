@@ -89,5 +89,8 @@ export function addToRegistry(command: string, replFunc: REPLFunction) {
     if(functionDictionary.get(command) === undefined){
         functionDictionary.set(command, replFunc);
     }
+    else {
+      return command + " already exists in the registry"
+  }
 }
 

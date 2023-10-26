@@ -9,6 +9,8 @@ import edu.brown.cs.student.main.server.handler.census.BroadbandHandler;
 import edu.brown.cs.student.main.server.handler.csv.LoadHandler;
 import edu.brown.cs.student.main.server.handler.csv.SearchHandler;
 import edu.brown.cs.student.main.server.handler.csv.ViewHandler;
+import edu.brown.cs.student.main.server.handler.RegistryTestHandler;
+
 import spark.Spark;
 
 import java.io.IOException;
@@ -51,6 +53,8 @@ public class Server {
     Spark.get("/view", new ViewHandler(sharedState));
     Spark.get("/search", new SearchHandler(sharedState));
     Spark.get("/broadband", new BroadbandHandler(new ACSSource()));
+    Spark.get("/registryTest", new RegistryTestHandler());
+
 
     Spark.init();
     Spark.awaitInitialization();
