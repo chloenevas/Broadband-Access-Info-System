@@ -5,6 +5,3 @@ export const TEXT_try_button_accessible_name = "submit your command";
 export const TEXT_input_box = "enter command";
 export const TEXT_try_button_text = "Submit!";
 export const HISTORY_accessible_name = "History of searches and results";
-
-
-
