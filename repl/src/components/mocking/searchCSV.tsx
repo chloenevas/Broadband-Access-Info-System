@@ -1,6 +1,5 @@
-import { mainSearchDict } from "../data/mockedJson";
-import { filepathDictionary } from "../data/mockedJson";
-
+import { mainSearchDict } from "./mockedJson";
+import { filepathDictionary } from "./mockedJson";
 
 /**
  * Searches for a specific value in a CSV data set based on user input.
@@ -56,7 +55,7 @@ export function search(input: string, data: string) {
   var response = specificDict.get(header + value); // Get the specific search entry from this CSV
 
   if (response === undefined) {
-    return "Value was not found";
+    return "No results were found";
   }
 
   return response;

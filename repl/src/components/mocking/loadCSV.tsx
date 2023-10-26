@@ -1,4 +1,4 @@
-import { filepathDictionary } from "../data/mockedJson";
+import { filepathDictionary } from "./mockedJson";
 
 /**
  * Takes in a filepath and returns result message along with the
@@ -13,5 +13,12 @@ export function load(filePath: string) {
   if (value !== undefined) {
     return ["success!", value];
   }
-  return ["couldn't find file", null];
+  return [
+    "Please check that a valid file path has been given. " +
+      '"' +
+      trimmedPath +
+      '"' +
+      " is incorrect.",
+    null,
+  ];
 }
