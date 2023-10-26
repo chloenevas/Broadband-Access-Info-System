@@ -24,10 +24,17 @@ function App() {
         </div>
         <div>To use load, enter "load_file &lt;csv-file-path&gt;"</div>
         <div>To use view, enter "view"</div>
-        <div>To use search, enter "search &lt;column&gt;&lt;value&gt;"</div>
+        <div>
+          To use search, enter "search
+          &lt;column&gt;&lt;value&gt;&lt;true/false (has headers)&gt;"
+        </div>
         <div>
           If you would like to search with no column identifier, simply omit the
           column identifier and enter only the value you'd like to search for
+        </div>
+        <div>
+          To search the census API, enter "broadband
+          &lt;county&gt;&lt;state&gt;"
         </div>
         <div>To retrieve a previous search, press the up arrow</div>
       </div>
