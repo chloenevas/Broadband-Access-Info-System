@@ -19,9 +19,7 @@ export interface InputProps {
   scrollHistoryToBottom: () => void;
 }
 
-
-
-// Create an instance of HandlerClass to receive its output
+// Create an instance of HandlerClass
 var handl = new HandlerClass();
 
 /**
@@ -42,8 +40,7 @@ export function REPLInput({
   const [value, setValue] = useState(""); // State for the input value
   const [historyIndex, setHistoryIndex] = useState<number>(-1); // State for history navigation index
 
-
-  // useEffect to listen for shortcuts regarding pre-registered commands and page navigation
+  // useEffect to listen for up and down arrow keys and navigate the history
   useEffect(() => {
     const handleShortcut = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key === "l") {
@@ -58,43 +55,28 @@ export function REPLInput({
         );
       } else if (e.ctrlKey && e.key === "b") {
         setValue("broadband <County Name> <State Name>");
-
-      } 
-      else if ( e.key === "ArrowUp") {
+      } else if (e.key === "ArrowUp") {
         navigateHistory("up");
-
       } else if (e.key === "ArrowDown") {
         navigateHistory("down");
-   
       } else if (e.ctrlKey && e.key === "c") {
         setValue("clear");
-      } 
+      }
     };
-
 
     const handleScroll = (e: KeyboardEvent) => {
       const scroll = document.getElementById("scrollHistory");
       if (scroll !== null) {
         if (e.key === "u" && e.ctrlKey) {
           scroll.scrollTop -= 10;
-    }    else if (e.key === "d" && e.ctrlKey) {
-            scroll.scrollTop += 10;
-          
-    } 
-    else if (e.key === "ArrowLeft" && e.ctrlKey) {
-      console.log(true)
-      scroll.scrollLeft -= 10;
-      e.preventDefault();
-    } else if (e.key === "ArrowRight" && e.ctrlKey) {
-      scroll.scrollLeft += 10;
-      e.preventDefault();
-    }
-  }
-};
+        } else if (e.key === "d" && e.ctrlKey) {
+          scroll.scrollTop += 10;
+        }
+      }
+    };
 
     window.addEventListener("keydown", handleShortcut);
     window.addEventListener("keydown", handleScroll);
-
   }, [historyIndex, queryHistory]);
 
   /**
@@ -132,6 +114,7 @@ export function REPLInput({
       commandString: value,
       scrollHistoryToBottom,
     });
+
     // Reset history index and input value after submitting
     setHistoryIndex(-1);
     setValue("");

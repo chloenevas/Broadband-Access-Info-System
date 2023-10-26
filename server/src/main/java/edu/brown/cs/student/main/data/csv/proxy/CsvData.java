@@ -2,6 +2,9 @@ package edu.brown.cs.student.main.data.csv.proxy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+
 
 /**
  * This is the state class that will contain information that will be shared
@@ -15,9 +18,14 @@ public class CsvData{
      * The proxyData variable acts as a container for the actual csv data, allowing its
      * contents to be accessed or modified as necessary.
      */
+
     private final List<List<List<String>>> proxyData = new ArrayList<>();
 
-    public CsvData(){
+    private int sessionID = 0;
+
+    private Map<Integer, List<List<String>>> sessionData = new HashMap<>();
+
+   public CsvData(){
 
     }
 
@@ -30,6 +38,7 @@ public class CsvData{
      */
     public void loadProxyData(List<List<String>> data){
         clearData();
+        this.sessionData.put(this.sessionID, data);
         this.proxyData.add(data);
     }
     /**
@@ -38,8 +47,8 @@ public class CsvData{
      * @return contents; csv parsed data
      */
 
-    public List<List<String>> getProxyData(){
-      return this.proxyData.get(0);
+    public List<List<String>> getProxyData(int sessID){
+        return this.sessionData.get(sessID);
     }
 
     /**
@@ -47,9 +56,24 @@ public class CsvData{
      * @return boolean indicating whether data is loaded
      */
 
-    public Boolean isLoaded(){
+    public Boolean isLoaded() {
         return this.proxyData.size() != 0;
     }
+    
+    /**
+     * Sets the session ID of the backend
+     */
+    public void setSessionID(int sessionID) {
+        this.sessionID = sessionID;
+    }
+
+    /**
+     * Gets the session ID of the backend
+     */
+    public int getSessionID() {
+        return this.sessionID;
+    }
+    
 
     /**
      * This is a helper method used to remove the contents of the proxyData container (i.e.

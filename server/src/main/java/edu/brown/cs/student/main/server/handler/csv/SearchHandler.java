@@ -50,6 +50,7 @@ public class SearchHandler implements Route {
         String target = request.queryParams("target");
         String column = request.queryParams("column");
         String hasHeader = request.queryParams("header");
+        int sessionID = Integer.parseInt(request.queryParams("sessionID"));
 
 
 
@@ -59,30 +60,35 @@ public class SearchHandler implements Route {
         Map<String, Object> searchMap = new HashMap<>();
 
         try {
-            Searcher searcher;
-            if(column == null || column.isEmpty()){
-                searcher =
-                    new Searcher(target, this.sharedData.getProxyData(), Boolean.valueOf(hasHeader));
-            } else{
-                searcher =
-                    new Searcher(target, this.sharedData.getProxyData(), column, Boolean.valueOf(hasHeader));
+            if (this.sharedData.getProxyData(sessionID) != null) {
+                Searcher searcher;
+                if (column == null || column.isEmpty()) {
+                    searcher = new Searcher(target, this.sharedData.getProxyData(sessionID),
+                            Boolean.valueOf(hasHeader));
+                } else {
+                    searcher = new Searcher(target, this.sharedData.getProxyData(sessionID), column,
+                            Boolean.valueOf(hasHeader));
 
+                }
+                searchMap.put("type", "success");
+
+                if (searcher.search().isEmpty()) {
+                    searchMap.put("type", "error");
+                    searchMap.put("details", "No results were found. Please check that you are searching "
+                            + "in one of the following columns: " + this.sharedData.getProxyData(sessionID).get(0)
+                            + " or in an index ranging from 0 to " +
+                            (this.sharedData.getProxyData(sessionID).get(0).size() - 1)
+                            + ". Otherwise, search for a new value using the following order: <Search target> +"
+                            + "<Column to search in (name or index)> + <True/False: file has headers>");
+                } else {
+                    searchMap.put("data", searcher.search());
+                }
+
+                return adapter.toJson(searchMap);
             }
-            searchMap.put("type", "success");
-
-            if(searcher.search().isEmpty()){
-                searchMap.put("type", "error");
-                searchMap.put("details", "No results were found. Please check that you are searching "
-                    + "in one of the following columns: " + this.sharedData.getProxyData().get(0)
-                    + " or in an index ranging from 0 to " +
-                    (this.sharedData.getProxyData().get(0).size()- 1)
-                    + ". Otherwise, search for a new value using the following order: <Search target> +"
-                    + "<Column to search in (name or index)> + <True/False: file has headers>");
-            } else{
-                searchMap.put("data", searcher.search());
+            else {
+                throw new Exception("You must first load a file to view it. Try loading first.");
             }
-
-            return adapter.toJson(searchMap);
 
         } catch(Exception e){
             String errorMessage = e.getMessage();
