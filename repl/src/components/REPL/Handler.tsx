@@ -7,8 +7,9 @@ import { functionDictionary } from "../CommandRegistry";
 
 export interface InputProps {
   history: (string | string[][])[];
+  //contains results of different commands and any corresponding labels
   setHistory: Dispatch<SetStateAction<(string | string[][])[]>>;
-  commandString: string;
+  commandString: string; //user input
   scrollHistoryToBottom: () => void;
 }
 /**
@@ -58,7 +59,9 @@ export class HandlerClass {
       this.brief = !this.brief;
       if (this.brief == false) {
         // if verbose mode, add the user's command in verbose mode
-        setHistory([...history, line]);
+        setHistory([...history, line + ": verbose"]);
+      } else {
+        setHistory([...history, line + ": brief"]);
       }
       scrollHistoryToBottom();
     }
@@ -74,6 +77,7 @@ export class HandlerClass {
     var commands: string[] = commandString.split(" ");
     var replFunc = functionDictionary.get(commands[0]);
 
+    //If the given command is not registered, indicate this on screen to user
     if (
       replFunc === undefined &&
       commands[0] !== "mode" &&
@@ -101,6 +105,7 @@ export class HandlerClass {
       scrollHistoryToBottom();
     }
 
+    //Removes command name prior to checking registry
     var commandValues = commands.shift();
     if (Array.isArray(commandValues)) {
       commands = commandValues;
@@ -109,6 +114,8 @@ export class HandlerClass {
     if (!this.mock) {
       var result: Promise<void>;
       if (typeof replFunc !== "undefined") {
+        //Locates the command in the registery map, then obtains its data
+
         result = replFunc(commands).then((info: string) => {
           if (this.brief) {
             // if brief mode, simply display output
@@ -172,16 +179,16 @@ export class HandlerClass {
       }
 
       if (commandString.split(" ")[0] === "broadband") {
-          outputResult = outputResult + this.parseData; // outputResult = "Output: " + parseData
-          if (this.brief) {
-            // if brief mode, simply display output
-            setHistory([...history, broadband(commandString)[1]]);
-          } else {
-            // if verbose mode, display input (line) and output
-            setHistory([...history, line, broadband(commandString)[1]]);
-          }
-          scrollHistoryToBottom();
-          return;
+        outputResult = outputResult + this.parseData; // outputResult = "Output: " + parseData
+        if (this.brief) {
+          // if brief mode, simply display output
+          setHistory([...history, broadband(commandString)[1]]);
+        } else {
+          // if verbose mode, display input (line) and output
+          setHistory([...history, line, broadband(commandString)[1]]);
+        }
+        scrollHistoryToBottom();
+        return;
       }
       setHistory([...history, line]);
       scrollHistoryToBottom();

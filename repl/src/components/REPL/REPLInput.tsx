@@ -19,7 +19,7 @@ export interface InputProps {
   scrollHistoryToBottom: () => void;
 }
 
-// Create an instance of HandlerClass
+// Create an instance of HandlerClass to receive its output
 var handl = new HandlerClass();
 
 /**
@@ -40,7 +40,7 @@ export function REPLInput({
   const [value, setValue] = useState(""); // State for the input value
   const [historyIndex, setHistoryIndex] = useState<number>(-1); // State for history navigation index
 
-  // useEffect to listen for up and down arrow keys and navigate the history
+  // useEffect to listen for shortcuts regarding pre-registered commands and page navigation
   useEffect(() => {
     const handleShortcut = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key === "l") {
@@ -71,6 +71,13 @@ export function REPLInput({
           scroll.scrollTop -= 10;
         } else if (e.key === "d" && e.ctrlKey) {
           scroll.scrollTop += 10;
+        } else if (e.key === "ArrowLeft" && e.ctrlKey) {
+          console.log(true);
+          scroll.scrollLeft -= 10;
+          e.preventDefault();
+        } else if (e.key === "ArrowRight" && e.ctrlKey) {
+          scroll.scrollLeft += 10;
+          e.preventDefault();
         }
       }
     };
@@ -108,19 +115,17 @@ export function REPLInput({
   const handleSubmit = (event: React.FormEvent) => {
     setQueryHistory([...queryHistory, value]);
     event.preventDefault(); // Prevent the default form submission
-      handl.handleInput({
-        history,
-        setHistory,
-        commandString: value,
-        scrollHistoryToBottom,
-      });
-
+    handl.handleInput({
+      history,
+      setHistory,
+      commandString: value,
+      scrollHistoryToBottom,
+    });
 
     // Reset history index and input value after submitting
     setHistoryIndex(-1);
     setValue("");
   };
-
 
   return (
     <div id="inputContainer">
