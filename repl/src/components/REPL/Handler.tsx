@@ -21,7 +21,6 @@ export class HandlerClass {
    * A boolean flag that represents whether the application is in brief mode (true) or verbose mode (false).
    */
   brief: Boolean = true;
-  mock: Boolean = false;
   /**
    * A string that holds information about the parsed data from CSV files, or "No Files Have Been Parsed" by default.
    */
@@ -30,7 +29,6 @@ export class HandlerClass {
    * Creates an instance of the HandlerClass.
    */
   constructor() {}
-
 
   /**
    * Handles the user's input command and manages the application's behavior based on the command.
@@ -60,13 +58,9 @@ export class HandlerClass {
       this.brief = !this.brief;
       if (this.brief == false) {
         // if verbose mode, add the user's command in verbose mode
-        setHistory([...history, line]);        
+        setHistory([...history, line]);
       }
       scrollHistoryToBottom();
-    }
-
-    if (commandString === "mock") {
-      this.mock = !this.mock;
     }
 
     var outputResult: string | string[][] = "";
@@ -79,49 +73,51 @@ export class HandlerClass {
 
     var commands: string[] = commandString.split(" ");
     var replFunc = functionDictionary.get(commands[0]);
-    
-    if (replFunc === undefined && commands[0] !== "mode" && commands[0] !== "clear") {
+
+    if (
+      replFunc === undefined &&
+      commands[0] !== "mode" &&
+      commands[0] !== "clear"
+    ) {
       if (this.brief) {
-        setHistory([...history, "\"" + commands[0] + "\"" + " is not a valid input"]);
+        setHistory([
+          ...history,
+          '"' + commands[0] + '"' + " is not a valid input",
+        ]);
         scrollHistoryToBottom();
       } else {
-        setHistory([...history, line, outputResult + "\"" + commands[0] + "\"" + " is not a valid input"]);
+        setHistory([
+          ...history,
+          line,
+          outputResult + '"' + commands[0] + '"' + " is not a valid input",
+        ]);
         scrollHistoryToBottom();
       }
     }
 
-      var commandValues = commands.shift();
-      if(Array.isArray(commandValues)){
-        commands = commandValues;
-      }
+    var commandValues = commands.shift();
+    if (Array.isArray(commandValues)) {
+      commands = commandValues;
+    }
 
-      var result: Promise<void>;
+    var result: Promise<void>;
     if (typeof replFunc !== "undefined") {
-      if (this.mock === true) {
-        if (commands[0] === "load_file") {
-          
+      result = replFunc(commands).then((info: string) => {
+        if (this.brief) {
+          // if brief mode, simply display output
+          console.log(typeof info);
+          setHistory([...history, info]);
+          scrollHistoryToBottom();
+        } else {
+          // if verbose mode, display input (line) and output
+          setHistory([...history, line, outputResult, info]);
+          scrollHistoryToBottom();
         }
-      }
-        result = replFunc(commands).then((info: string) => {
-            if (this.brief) {
-              // if brief mode, simply display output
-              setHistory([...history, info]);
-              scrollHistoryToBottom();
-            } else {
-              // if verbose mode, display input (line) and output
-              setHistory([...history, line, outputResult, info]);
-              scrollHistoryToBottom();
-          }
-        });
-
-
-    } 
-  
-
+      });
+    }
   }
 
   getMode(): Boolean {
     return this.brief;
   }
-
 }

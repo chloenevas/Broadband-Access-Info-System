@@ -13,12 +13,14 @@ export default function REPL() {
   const [notification, setNotif] = useState("");
   const historySpaceRef = useRef<HTMLDivElement | null>(null);
 
-
-
   return (
     <div className="repl">
-      <div className="historySpace" ref={historySpaceRef} id="scrollHistory"
-      aria-label={HISTORY_accessible_name}>
+      <div
+        className="historySpace"
+        ref={historySpaceRef}
+        id="scrollHistory"
+        aria-label={HISTORY_accessible_name}
+      >
         <History history={history} />
       </div>
       <hr></hr>
