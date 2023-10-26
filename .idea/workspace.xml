@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93af11c6-b2f3-4f62-a879-0f6957b2db08" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/repl/tests/jest.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/repl/tests/jest.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/src/components/REPL/Handler.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/REPL/Handler.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/src/components/REPL/History.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/REPL/History.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repl/src/components/REPL/REPLInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/REPL/REPLInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/data/csv/proxy/CsvData.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/data/csv/proxy/CsvData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/LoadHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/LoadHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/SearchHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/SearchHandler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +85,7 @@
       <workItem from="1698130254624" duration="49000" />
       <workItem from="1698130772454" duration="614000" />
       <workItem from="1698304859738" duration="662000" />
+      <workItem from="1698343627835" duration="598000" />
     </task>
     <servers />
   </component>

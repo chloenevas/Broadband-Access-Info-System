@@ -50,7 +50,6 @@ export class HandlerClass {
     if (commandString === "clear") {
       setHistory([]);
       this.brief = true;
-      // scrollHistoryToBottom();
       return;
     }
 
@@ -89,7 +88,6 @@ export class HandlerClass {
           ...history,
           '"' + commands[0] + '"' + " is not a valid input",
         ]);
-        scrollHistoryToBottom();
       } else {
         setHistory([
           ...history,
@@ -126,6 +124,7 @@ export class HandlerClass {
             setHistory([...history, line, outputResult, info]);
             scrollHistoryToBottom();
           }
+
         });
       }
     } else {
@@ -192,6 +191,7 @@ export class HandlerClass {
       setHistory([...history, line]);
       scrollHistoryToBottom();
     }
+
   }
 
   getMode(): Boolean {

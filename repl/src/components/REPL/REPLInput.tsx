@@ -71,15 +71,27 @@ export function REPLInput({
           scroll.scrollTop -= 10;
         } else if (e.key === "d" && e.ctrlKey) {
           scroll.scrollTop += 10;
-        } else if (e.key === "ArrowLeft" && e.ctrlKey) {
-          console.log(true);
+        } else if (e.key === "l" && e.ctrlKey && e.altKey) {
           scroll.scrollLeft -= 10;
-          e.preventDefault();
-        } else if (e.key === "ArrowRight" && e.ctrlKey) {
+    
+        } else if (e.key === "r" && e.ctrlKey && e.altKey) {
           scroll.scrollLeft += 10;
-          e.preventDefault();
         }
+
+        
       }
+
+      /**shortcuts for moving entire page up and down, works even when focused on
+       * a different element
+       * */
+    
+
+      if(e.key == "ArrowUp" && e.altKey){
+        window.scrollBy({ top: -50, left: 0 });
+      } else if (e.key == "ArrowDown" && e.altKey) {
+        window.scrollBy({ top: -50, left: 0 });
+    
+        } 
     };
 
     window.addEventListener("keydown", handleShortcut);
