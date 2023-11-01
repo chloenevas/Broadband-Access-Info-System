@@ -6,17 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="93af11c6-b2f3-4f62-a879-0f6957b2db08" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repl/src/components/REPL/Handler.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/REPL/Handler.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repl/src/components/REPL/History.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/REPL/History.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repl/src/components/REPL/REPLInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/repl/src/components/REPL/REPLInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/data/csv/proxy/CsvData.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/data/csv/proxy/CsvData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/LoadHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/LoadHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/SearchHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/server/handler/csv/SearchHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/edu/brown/cs/student/main/data/census/ACSSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/edu/brown/cs/student/main/data/census/ACSSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/data/census/ACSSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/edu/brown/cs/student/main/data/census/ACSSource.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -33,25 +36,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/kamrynwalker/cs32/projects/repl-cnevas-kwalke19&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/kamrynwalker/cs32/projects/repl-cnevas-kwalke19",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.TestJSONData.testLoadedJSON2">
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.main.server.Server" />
       <module name="moshi" />
@@ -65,8 +69,59 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestJSONData.testLoadedJSON" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="moshi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.main" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.main.TestJSONData" />
+      <option name="METHOD_NAME" value="testLoadedJSON" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestJSONData.testLoadedJSON2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="moshi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.main" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.main.TestJSONData" />
+      <option name="METHOD_NAME" value="testLoadedJSON2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestJSONData.testLoadedJSONNums" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="moshi" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.brown.cs.student.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.brown.cs.student.main" />
+      <option name="MAIN_CLASS_NAME" value="edu.brown.cs.student.main.TestJSONData" />
+      <option name="METHOD_NAME" value="testLoadedJSONNums" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestJSONData.testLoadedJSON2" />
+        <item itemvalue="JUnit.TestJSONData.testLoadedJSONNums" />
+        <item itemvalue="JUnit.TestJSONData.testLoadedJSON" />
         <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
@@ -85,7 +140,9 @@
       <workItem from="1698130254624" duration="49000" />
       <workItem from="1698130772454" duration="614000" />
       <workItem from="1698304859738" duration="662000" />
-      <workItem from="1698343627835" duration="598000" />
+      <workItem from="1698343627835" duration="1243000" />
+      <workItem from="1698508816612" duration="728000" />
+      <workItem from="1698810495858" duration="7205000" />
     </task>
     <servers />
   </component>

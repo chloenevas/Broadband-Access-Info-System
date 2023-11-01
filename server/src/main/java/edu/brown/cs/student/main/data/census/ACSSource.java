@@ -58,6 +58,7 @@ public class ACSSource implements CensusDataSource{
       Moshi moshi = new Moshi.Builder().build();
       Type listListStringObject = Types.newParameterizedType(List.class, List.class, String.class);
       JsonAdapter<List<List<String>>> adapter = moshi.adapter(listListStringObject);
+    System.out.println(new Buffer().readFrom(clientConnection.getInputStream()));
       List<List<String>> input = adapter.fromJson(new Buffer().readFrom(clientConnection.getInputStream()));
 
 
